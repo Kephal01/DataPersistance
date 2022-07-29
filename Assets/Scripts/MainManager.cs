@@ -69,6 +69,7 @@ public class MainManager : MonoBehaviour
         if(SaveData.Instance != null)
         {
             Infotext.text = "Best Score : "+SaveData.Instance.playerName+" "+SaveData.Instance.highscore;
+            highestPoints = SaveData.Instance.highscore;
         }
     }
     void AddPoint(int point)

@@ -56,7 +56,7 @@ public class MenuHandler : MonoBehaviour
         {
             warning2.gameObject.SetActive(false);
             warning.gameObject.SetActive(false);
-            SetName(input);
+            //SetName(input);
             Debug.Log("Let's start the game "+input);
             SaveData.Instance.SwitchScene(1);
         }
