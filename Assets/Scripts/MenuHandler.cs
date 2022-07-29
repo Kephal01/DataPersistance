@@ -11,15 +11,19 @@ public class MenuHandler : MonoBehaviour
 {
 
     public TMP_Text warning;
+    public TMP_Text warning2;
     public TMP_Text playerName;
     public string input;
+    private bool couldLoad = false;
     // Start is called before the first frame update
     void Start()
     {
         warning.gameObject.SetActive(false);
+        warning2.gameObject.SetActive(false);
         if(SaveData.Instance != null)
         {
             playerName.SetText(SaveData.Instance.playerName);
+            couldLoad = true;
         }
     }
     public void SetName(string tosave)
@@ -36,6 +40,7 @@ public class MenuHandler : MonoBehaviour
     {
         if(input != "")
         {
+            warning2.gameObject.SetActive(false);
             warning.gameObject.SetActive(false);
             SetName(input);
             Debug.Log("Let's start the game "+input);
@@ -43,6 +48,20 @@ public class MenuHandler : MonoBehaviour
         }
         else{
             warning.gameObject.SetActive(true);
+        }
+    }
+    public void LoadGame()
+    {
+        if(couldLoad)
+        {
+            warning2.gameObject.SetActive(false);
+            warning.gameObject.SetActive(false);
+            SetName(input);
+            Debug.Log("Let's start the game "+input);
+            SaveData.Instance.SwitchScene(1);
+        }
+        else{
+            warning2.gameObject.SetActive(true);
         }
     }
     public void Exit()
